@@ -1,13 +1,14 @@
 import React from 'react';
-import addData from './components/addData'
-
+import AddBook from './components/addData'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-
-
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<AddBook />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

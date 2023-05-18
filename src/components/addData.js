@@ -2,16 +2,21 @@ import React, { useState, useEffect } from "react";
 import Papa from "papaparse";
 import TableView from "./TableView";
 
-import add from "./actionCreators";
-import { connect } from 'react-redux'
-import store from "./store";
+import addData from "../store/data";
+import { useDispatch } from "react-redux";
 
 
 
-function AddBook(props) {
 
-    store.dispatch({ type: 'add', payload: "3" });
-    //console.log(store.dispatch());
+function AddBook() {
+
+    const dispatch = useDispatch()
+
+    dispatch(
+        addData({ id: 'dasd' })
+    )
+
+
     const dataInput = React.createRef();
     const st = { margin: '20px' }
     const [file, setFile] = useState(null);
@@ -97,10 +102,6 @@ function AddBook(props) {
         }
         setDataSet(x);
     }
-
-
-
-    const x = connect(null, mapDispatchToProps)(AddBook);
     return (
         <div>
             <div>
@@ -120,9 +121,4 @@ function AddBook(props) {
 
     );
 };
-
-const mapDispatchToProps = dispatch => ({
-    add: data => dispatch(add(data))
-})
-
 export default AddBook;
